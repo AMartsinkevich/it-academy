@@ -29,7 +29,7 @@ class Sphere:
 
     def is_point_inside(self, x_coord, y_coord, z_coord):
         distance = ((x_coord - self._x_coord) ** 2 + (y_coord - self._y_coord) ** 2 + (z_coord - self._z_coord) ** 2) ** (1/2)
-        return True if distance < self._radius else False
+        return distance < self._radius
 
 
 if __name__ == '__main__':

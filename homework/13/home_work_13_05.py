@@ -1,10 +1,10 @@
 class SuperStr(str):
 
     def is_repeatance(self, s):
-        return False if self.__str__().replace(s, '') else True
+        return not self.__str__().replace(s, '')
 
     def is_palindrom(self):
-        return True if self.__str__() == "".join(reversed(self.__str__())) else False
+        return self.__str__() == "".join(reversed(self.__str__()))
 
 
 if __name__ == '__main__':
