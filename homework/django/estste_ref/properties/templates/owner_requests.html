@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} My requests {% endblock %}
+{% block content %}
+
+<h1>My properties requests</h1>
+{% if deal_requests %}
+<ul class="list-group">
+    {% for req in deal_requests %}
+    <li class="list-group-item">
+        <srtong>{{ req.property.title }}</srtong> from {{ req.seeker.username }}
+        {{ req.message|linebreaks }}
+        <small class="text-muted d-block">
+            sent {{ req.created_at|date:"Y-m-d H:i" }}
+        </small>
+        <span class="badge
+        {% if req.status == 'approved' %}bg-success
+            {% elif req.status == 'rejected' %}bg-danger
+            {% else %}bg-secondary
+        {% endif %}">{{ req.status }}</span>
+        {% if req.status == 'pending' %}
+        <form method="post" action="{% url 'properties:approve_request' req.id %}">
+            {% csrf_token %}
+            <button class="btn btn-sm btn-success">Approve</button>
+        </form>
+        <form method="post" action="{% url 'properties:reject_request' req.id %}">
+            {% csrf_token %}
+            <button class="btn btn-sm btn-danger">Reject</button>
+        </form>
+
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No requests yet</p>
+{% endif %}
+
+{% endblock %}

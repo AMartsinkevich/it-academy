@@ -1,0 +1,9 @@
+<!-- John D., Seller -->
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar John D">
+    <rect width="120" height="120" rx="60" ry="60" fill="#7aa7c7" />
+    <circle cx="60" cy="50" r="30" fill="#fff" />
+    <circle cx="60" cy="50" r="25" fill="#7aa7c7" />
+    <circle cx="45" cy="45" r="5" fill="#fff" />
+    <circle cx="75" cy="45" r="5" fill="#fff" />
+    <path d="M40 75 Q60 90 80 75" stroke="#fff" stroke-width="5" fill="none" />
+</svg>

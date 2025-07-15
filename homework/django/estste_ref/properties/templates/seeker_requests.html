@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} My request {% endblock %}
+
+{% block content %}
+
+  <h1>My properties requests</h1>
+
+  {% if deal_requests %}
+  <ul class="list-group">
+      {% for req in deal_requests %}
+          <li class="list-group-item">
+              <strong>{{ req.title }}</strong>
+              {{ req.message|linebreaks }}
+              <small class="text-muted d-block">
+                sent {{ req.create_at|date:"Y-m-d H:i" }}
+              </small>
+                 <span class="badge
+              {% if req.status  == 'approved' %}bg-success {% endif %}
+              {% if req.status == 'denied' %}bg-danger {% endif %}
+              {% if req.status == 'pending' %} bg-secondary {%endif %}">{{ req.status }}</span>
+          </li>
+
+      {% endfor %}
+  </ul>
+  {% else %}
+  <p>No requests yet</p>
+  {% endif %}
+{% endblock %}

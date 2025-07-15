@@ -1,0 +1,9 @@
+<!-- Emily R., Buyer -->
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar Emily R">
+    <circle cx="60" cy="60" r="58" fill="#e27c7c" />
+    <circle cx="60" cy="50" r="30" fill="#fff" />
+    <circle cx="60" cy="50" r="25" fill="#e27c7c" />
+    <circle cx="45" cy="45" r="5" fill="#fff" />
+    <circle cx="75" cy="45" r="5" fill="#fff" />
+    <path d="M40 75 Q60 90 80 75" stroke="#fff" stroke-width="5" fill="none" />
+</svg>
