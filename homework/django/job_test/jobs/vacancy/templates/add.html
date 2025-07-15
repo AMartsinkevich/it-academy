@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    header {
+        display: grid;
+        grid-template-columns: auto 600px auto;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+        border: 1px solid black
+    }
+    
+    .forms {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        border: 1px solid black    
+    }
+    button {
+        width: 150px;
+    }
+</style>
+
+<header>
+    <div></div>
+    <div class="forms">
+        <form method="post" action="add_vacancy">
+    
+            <button type="submit">Add</button>
+        </form>
+        <form method="post" action="vacancy_remove">
+            <input type="text" name="remove-number">
+            <button type="submit">Remove</button>
+        </form>
+        <form method="post" action="vacancy_show">
+    
+            <button type="submit">Show</button>
+        </form>
+    </div>
+    <div></div>
+</header>
+
+<section class="vacancies">
+
+</section>
+<h2> {{ vacancies }} </h2>
+
+{% for vacancy in vacancies %}
+<h2>{{ vacancy.name }}</h2>
+<h3> {{ vacancy.added_at }} </h3>
+{% endfor %}
+
+{% endblock content %}
