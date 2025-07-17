@@ -17,21 +17,14 @@ def index(request):
     return render(request, 'index.html',
                   context={'vacancies': vacancies})
 
+
 def add(request):
-    vacancies = Vacancy.objects.all()
-    return render(request, 'index.html',
-                  context={'vacancies': vacancies})
-
-
-
-def add_vacancy(request):
 
     if request.method == 'POST':
         form = VacancyAddForm(request.POST)
 
         if form.is_valid():
             add_form = form.save(commit=False)
-            print(f'{generate_random_string(10) = }')
             add_form.name = generate_random_string(10)
             add_form.save()
             return redirect('vacancy:index')
@@ -39,3 +32,35 @@ def add_vacancy(request):
         form = VacancyAddForm()
 
     return render(request, 'index.html', {'form': form})
+
+
+def remove(request):
+
+    if request.method == 'POST':
+        form = VacancyRemoveForm(request.POST)
+        id_to_delete = request.POST.get('id')
+
+        if form.is_valid():
+            del_form = form.save(commit=False)
+            if id_to_delete and id_to_delete.isdigit():
+                Vacancy.objects.filter(pk=int(id_to_delete)).delete()
+            del_form.save()
+            return redirect('vacancy:index')
+    else:
+        form = VacancyAddForm()
+
+    return render(request, 'index.html', {'form': form})
+
+def show(request):
+
+    if request.method == 'POST':
+        form = VacancyRemoveForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('vacancy:index')
+    else:
+        form = VacancyAddForm()
+
+    return render(request, 'index.html', {'form': form})
+

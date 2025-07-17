@@ -22,23 +22,42 @@
     button {
         width: 150px;
     }
+    .data {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        border: 1px solid black;
+        padding: 10px 10px; 
+    }
+    .bold {
+        font-size: 2em;
+        font-weight: 700;
+    }
+    .light {
+        font-size: 1.2em;
+        font-weight: 500;
+    }
 </style>
 
 <header>
     <div></div>
     <div class="forms">
-        <!-- <form method="post" action="vacancy:add"> -->
+        <!-- <form method="post" action="vacancy:add"> -->        
         <form method="post" action="{% url 'vacancy:add' %}">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Add</button>
         </form>
-        <form method="post" action="vacancy_remove">
-            <input type="text" name="remove-number">
+        <form method="post" action="{% url 'vacancy:remove' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="text" name="id">
             <button type="submit">Remove</button>
         </form>
-        <form method="post" action="vacancy_show">
-    
+        <form method="post" action="{% url 'vacancy:show' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
             <button type="submit">Show</button>
         </form>
     </div>
@@ -48,11 +67,17 @@
 <section class="vacancies">
 
 </section>
-<h2> {{ vacancies }} </h2>
-
+<div class="data bold">
+    <span>id</span>
+    <span>name</span>
+    <span>added_at</span>
+</div>
 {% for vacancy in vacancies %}
-<h2>{{ vacancy.name }}</h2>
-<h3> {{ vacancy.added_at }} </h3>
+<div class="data light">
+    <span>{{ vacancy.pk }}</span>
+    <span>{{ vacancy.name }}</span>
+    <span>{{ vacancy.added_at }}</span>
+</div>
 {% endfor %}
 
 {% endblock content %}
