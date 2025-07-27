@@ -1,0 +1,6 @@
+
+django
+django-stubs
+djangorestframework
+djangorestframework-simplejwt
+djoser
