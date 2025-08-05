@@ -1,0 +1,4 @@
+django
+django-debug-toolbar
+django-simple-captcha
+# django-recaptcha
